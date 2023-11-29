@@ -25,13 +25,14 @@ public class KafkaConsoleProducer {
 		KafkaProducer<String,String> kafkaProducer = new KafkaProducer<String, String>(producerProps);
 		
 		boolean shallContinue=true;
+	
+		String topic = "TopicA";
 		
 		while(shallContinue) {
-			String key = "TopicA";
 			System.out.print("Message: ");
 			String value = scan.nextLine();
 			
-			ProducerRecord<String,String> msg = new ProducerRecord<String, String>(key, value);
+			ProducerRecord<String,String> msg = new ProducerRecord<String, String>(topic, value);
 			kafkaProducer.send(msg);
 			kafkaProducer.flush();
 			
